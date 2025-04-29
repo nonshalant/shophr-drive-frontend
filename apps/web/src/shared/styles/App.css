@@ -1,0 +1,77 @@
+global.css
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: #1e2a3a;
+  color: white;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+a {
+  color: #1e76cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Container for centering content */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Global Button Style */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e76cc;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #195aa0;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 5px 1px;
+  border: 2px solid #4c6a92;
+  border-radius: 8px;
+  background-color: #2c3b56;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #1e76cc;
+  box-shadow: 0 0 5px rgba(30, 118, 204, 0.7);
+}
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}

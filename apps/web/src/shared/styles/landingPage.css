@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.landing-container {
+  background: linear-gradient(180deg, #1a2a48 0%, #0f1d36 100%);
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  text-align: center;
+}
+
+.landing-image {
+  width: 180px;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.landing-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ff5a1f;
+}
+
+.landing-subtitle {
+  font-size: 1rem;
+  color: #c9d1e0;
+  margin-bottom: 2rem;
+}
+
+.landing-button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 280px;
+}
+
+.landing-button:hover {
+  background-color: #0056cc;
+}
+
+.slide-in {
+  width: 200px;
+  height: 100px;
+  animation-name: slideIn;
+  animation-duration: 2s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(1000px); opacity: 0; }
+  to { transform: translateX(0px); opacity: 1; }
+}

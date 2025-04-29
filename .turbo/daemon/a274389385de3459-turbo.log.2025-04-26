@@ -1,0 +1,10 @@
+2025-04-26T21:47:06.644644Z  INFO turborepo_lib::daemon::server: triggering shutdown
+2025-04-26T21:47:07.171451Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo/cookies/1.cookie")}
+2025-04-26T21:47:07.171515Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-04-26T21:47:31.269444Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("package.json")}
+2025-04-26T21:47:31.269481Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(All)
+2025-04-26T21:47:32.469269Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("package.json")}
+2025-04-26T21:47:32.469289Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(All)
+2025-04-26T21:47:41.268629Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo/cookies/2.cookie")}
+2025-04-26T21:47:41.268657Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-04-26T21:48:43.635238Z  INFO turborepo_lib::daemon::server: triggering shutdown

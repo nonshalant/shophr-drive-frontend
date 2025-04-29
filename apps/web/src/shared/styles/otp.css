@@ -1,0 +1,90 @@
+.otp-form-container {
+  background: #1e293b; 
+  padding: 2rem;
+  border-radius: 12px;  
+  max-width: 400px;
+  margin: 3rem auto;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+}
+
+.otp-form-container h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.otp-form-container h2 {
+  font-size: 1rem;
+  color: #cbd5e1;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.otp-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.country-code-container,
+.phone-number-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.otp-form-container label {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.otp-form-container select,
+input[type="tel"] {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  background: #334155;
+  color: #ffffff;
+}
+
+.otp-form-container input[type="tel"]::placeholder {
+  color: #94a3b8;
+}
+
+.otp-form-container button {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.otp-form-container button:hover {
+  background: #2563eb;
+}
+
+.otp-form-container .login-redirect {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.otp-form-container .login-redirect:hover {
+  color: #3b82f6;
+}
