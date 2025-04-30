@@ -19,7 +19,6 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-      console.log(process.env.REACT_APP_SERVER_URL);
     try {
       const user = await login(formData);
       console.log(user);

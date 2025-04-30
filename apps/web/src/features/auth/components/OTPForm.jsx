@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../../shared/styles/otp.css";
-import { AuthenticateApi } from "../api/auth";
+import AuthServices from "../services/authServices";
 
 const OTPForm = ({ setVerifyOtp }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
+  const [message, setMessage] = useState("");
 
   const handleRedirectToLogin = () => {
     navigate("/login");
@@ -19,23 +20,24 @@ const OTPForm = ({ setVerifyOtp }) => {
     });
   };
 
-  console.log("Form data:", formData);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { country_code, phone_number } = formData;
+
     try {
       const phoneNumberWithCode = `${country_code}${phone_number}`;
-      const response = await AuthenticateApi.sendOtpRequest(
+      const response = await AuthServices.sendOtpRequest(
         phoneNumberWithCode
       );
-      if (response.status !== 200) {
-        console.error("Error sending OTP:", response);
+      if (response === "MAX_ATTEMPTS_REACHED") {
+        console.error("You have reached the maximum attempts. Please try again later.");
+        setMessage(
+          "You have reached the maximum attempts. Please try again later."
+        );
         return;
       }
-      console.log("OTP sent successfully");
+      localStorage.setItem("phone_number", phoneNumberWithCode);
       setVerifyOtp(true);
-      console.log("OTP sent successfully");
     } catch (error) {
       console.error("Error submitting OTP form:", error);
     }
@@ -85,6 +87,7 @@ const OTPForm = ({ setVerifyOtp }) => {
       <h3 className="login-redirect" onClick={handleRedirectToLogin}>
         Log in with your email and password?
       </h3>
+      {message && <p className="error-message">{message}</p>}
     </div>
   );
 };

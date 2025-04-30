@@ -14,7 +14,7 @@ const DriverLanding = () => {
       <p className="landing-subtitle">
         Deliver with freedom. Earn on your terms.
       </p>
-      <button className="landing-button" onClick={() => navigate("/otp")}>
+      <button className="landing-button" onClick={() => navigate("/login")}>
         Get Started
       </button>
     </div>

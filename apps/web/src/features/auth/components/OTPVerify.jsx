@@ -1,8 +1,12 @@
 import React, { useRef } from "react";
 import "../../../shared/styles/otpVerify.css";
+import AuthServices from "../services/authServices";
+import { useNavigate } from "react-router-dom";
 
 export default function OTPVerify() {
   const inputs = useRef([]);
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleInput = (e, index) => {
     const value = e.target.value;
@@ -17,12 +21,17 @@ export default function OTPVerify() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const otp = inputs.current.map((input) => input.value).join("");
-    console.log("OTP Submitted:", otp);
+
     try {
-      
+      const phoneNumber = localStorage.getItem("phone_number");
+      const response = await AuthServices.verifyOtp(phoneNumber, otp);
+      if (response !== "VERIFIED") {
+        setMessage("Invalid OTP. Please try again.");
+      }
+      navigate("/home");
     } catch (error) {
       console.error("Error submitting OTP:", error);
     }

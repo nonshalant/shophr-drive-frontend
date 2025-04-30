@@ -4,49 +4,37 @@ import { images } from "../../../assets/images";
 const DriverSignupForm = () => {
   const [formData, setFormData] = useState({
     fullName: "",
-    dob: "",
-    phone: "",
     email: "",
-    driverLicense: "",
-    licenseExpiration: "",
-    vehicleType: "",
-    vehicleMake: "",
-    vehicleModel: "",
-    vehicleYear: "",
-    vehicleColor: "",
-    insuranceProof: null,
-    backgroundCheckConsent: false,
-    bankAccountNumber: "",
-    bankRoutingNumber: "",
-    ssn: "",
-    profilePhoto: null,
+    password: "",
+    verifyPassword: "",
   });
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleFileChange = (e) => {
-    const { name, files } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
-  };
-
-  const handleCheckboxChange = (e) => {
-    const { name, checked } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: checked }));
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Here you would submit the formData to your backend or API
+    if (formData.password !== formData.verifyPassword) {
+      setMessage("Passwords do not match!");
+      return;
+    }
+
+    try {
+      const response = await AuthenticateApi.register({ formData });
+      console.log("Signup successful:", response);
+    } catch (error) {
+      setMessage("An error occurred during signup. Please try again.");
+      return;
+    }
   };
 
   return (
     <form className="signup-form-container" onSubmit={handleSubmit}>
       <img src={images.logo.src} alt={images.logo.seo} className="logo" />
-      <h2>Dasher Signup</h2>
+      <h2>Shophr Drive Signup</h2>
       <div>
         <label>Full Name:</label>
         <input
@@ -56,30 +44,6 @@ const DriverSignupForm = () => {
           onChange={handleChange}
           required
           placeholder="Enter your full name"
-        />
-      </div>
-
-      <div>
-        <label>Date of Birth:</label>
-        <input
-          type="date"
-          name="dob"
-          value={formData.dob}
-          onChange={handleChange}
-          required
-          placeholder="MM/DD/YYYY"
-        />
-      </div>
-
-      <div>
-        <label>Phone Number:</label>
-        <input
-          type="tel"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-          placeholder="Enter your phone number"
         />
       </div>
 
@@ -96,159 +60,31 @@ const DriverSignupForm = () => {
       </div>
 
       <div>
-        <label>Driver's License Number:</label>
+        <label>Password:</label>
         <input
-          type="text"
-          name="driverLicense"
-          value={formData.driverLicense}
+          type="password"
+          name="password"
+          value={formData.password}
           onChange={handleChange}
           required
-          placeholder="Enter your driver's license number"
+          placeholder="Choose a password"
         />
       </div>
 
       <div>
-        <label>License Expiration Date:</label>
+        <label>Verify Password:</label>
         <input
-          type="date"
-          name="licenseExpiration"
-          value={formData.licenseExpiration}
+          type="password"
+          name="verifyPassword"
+          value={formData.verifyPassword}
           onChange={handleChange}
           required
-          placeholder="MM/DD/YYYY"
-        />
-      </div>
-
-      <div>
-        <label>Vehicle Type:</label>
-        <input
-          type="text"
-          name="vehicleType"
-          value={formData.vehicleType}
-          onChange={handleChange}
-          required
-          placeholder="Enter your vehicle type"
-        />
-      </div>
-
-      <div>
-        <label>Vehicle Make:</label>
-        <input
-          type="text"
-          name="vehicleMake"
-          value={formData.vehicleMake}
-          onChange={handleChange}
-          required
-          placeholder="Enter your vehicle make"
-        />
-      </div>
-
-      <div>
-        <label>Vehicle Model:</label>
-        <input
-          type="text"
-          name="vehicleModel"
-          value={formData.vehicleModel}
-          onChange={handleChange}
-          required
-          placeholder="Enter your vehicle model"
-        />
-      </div>
-
-      <div>
-        <label>Vehicle Year:</label>
-        <input
-          type="number"
-          name="vehicleYear"
-          value={formData.vehicleYear}
-          onChange={handleChange}
-          required
-          placeholder="Enter your vehicle year"
-        />
-      </div>
-
-      <div>
-        <label>Vehicle Color:</label>
-        <input
-          type="text"
-          name="vehicleColor"
-          value={formData.vehicleColor}
-          onChange={handleChange}
-          required
-          placeholder="Enter your vehicle color"
-        />
-      </div>
-
-      <div>
-        <label>Proof of Vehicle Insurance:</label>
-        <input
-          type="file"
-          name="insuranceProof"
-          onChange={handleFileChange}
-          required
-        />
-      </div>
-
-      <div>
-        <label>
-          Consent for Background Check:
-          <input
-            type="checkbox"
-            name="backgroundCheckConsent"
-            checked={formData.backgroundCheckConsent}
-            onChange={handleCheckboxChange}
-            required
-          />
-        </label>
-      </div>
-
-      <div>
-        <label>Bank Account Number:</label>
-        <input
-          type="text"
-          name="bankAccountNumber"
-          value={formData.bankAccountNumber}
-          onChange={handleChange}
-          required
-          placeholder="Enter your bank account number"
-        />
-      </div>
-
-      <div>
-        <label>Bank Routing Number:</label>
-        <input
-          type="text"
-          name="bankRoutingNumber"
-          value={formData.bankRoutingNumber}
-          onChange={handleChange}
-          required
-          placeholder="Enter your bank routing number"
-        />
-      </div>
-
-      <div>
-        <label>Social Security Number (SSN):</label>
-        <input
-          type="text"
-          name="ssn"
-          value={formData.ssn}
-          onChange={handleChange}
-          required
-          placeholder="Enter your SSN"
-        />
-      </div>
-
-      <div>
-        <label>Profile Photo:</label>
-        <input
-          type="file"
-          name="profilePhoto"
-          onChange={handleFileChange}
-          required
+          placeholder="Re-enter your password"
         />
       </div>
 
       <button type="submit">Sign Up</button>
+      {message && <p className="error-message">{message}</p>}
     </form>
   );
 };
